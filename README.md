@@ -9,6 +9,11 @@ Source article for scene hierarchy and file management: https://blog.theknightso
 
 Source for code SOPs: https://gist.github.com/cgourlay/c419390066b22c4b2d4f
 
+## Branches
+* Master Branch to be considered Active Development Branch
+* Release Branch to be kept seperate from Active Development Branch
+* Each developer to have their own Developement Branch with the following name scheme: <FirstInitial>.DevBranch
+* Branches must be reviewed before merging
 
 ## File Management
 Folder must adhere to the following layout:
