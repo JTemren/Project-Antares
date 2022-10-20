@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
         _playerInput = new PlayerInput();
         _onFoot = _playerInput.PlayerOnfoot;
         _motor = GetComponent<PlayerMotor>();
+        _onFoot.Jump.performed += ctx => _motor.jump();
     }
 
     private void FixedUpdate()
@@ -28,5 +29,10 @@ public class InputManager : MonoBehaviour
     void OnEnable()
     {
         _onFoot.Enable();
+    }
+
+    private void OnDisable()
+    {
+        _onFoot.Disable();
     }
 }

@@ -6,33 +6,34 @@ using UnityEngine.Serialization;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [SerializeField] private CharacterController controller;
-    [SerializeField] private Vector3 playerVol;
-    [SerializeField] private float movementSpeed;
-    [SerializeField] private bool isGrounded;
-    [SerializeField] private float gravity = -9.8f;
+    [SerializeField] public new Rigidbody2D rigidbody2D;
+    [SerializeField] private float movementSpeed = 5f;
+    [SerializeField] private float jumpHeight = 3f;
+    public bool isGrounded;
+    public float gravity = -9.81f;
+    public LayerMask groundLayers;
+    
+
     private void Start()
     {
-        controller = GetComponent<CharacterController>();
+        rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        isGrounded = controller.isGrounded;
+        isGrounded = Physics2D.OverlapArea(new Vector2(transform.position.x - 0.5f, transform.position.y - 0.5f), new Vector2(transform.position.x+0.5f,transform.position.y -0.51f), groundLayers);
     }
 
     // receive the inputs from InputManager.cs
     public void ProcessMove(Vector2 input)
     {
-        Vector3 moveDirection = Vector3.zero;
-        moveDirection.x = input.x;
-        moveDirection.y = input.y;
-        controller.Move(transform.TransformDirection(moveDirection) * (movementSpeed * Time.deltaTime));
-        playerVol.y += gravity * Time.deltaTime;
-        if (isGrounded && playerVol.y < 0)
-            playerVol.y = -2;
-        controller.Move(playerVol * Time.deltaTime);
-        Debug.Log(playerVol.y);
+        rigidbody2D.velocity = new Vector2(input.x *movementSpeed,rigidbody2D.velocity.y);
+        // playerVol.y += gravity * Time.deltaTime;
+    }
 
+    public void jump()
+    {
+        if (!isGrounded) return;
+        rigidbody2D.velocity = Vector2.up * jumpHeight;
     }
 }
