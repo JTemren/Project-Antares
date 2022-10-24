@@ -1679,7 +1679,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody2D: {fileID: 0}
   movementSpeed: 5
-  jumpHeight: 3
+  jumpHeight: 7.5
+  jumpForce: 10
   isGrounded: 0
   gravity: -9.81
   groundLayers:

@@ -8,7 +8,8 @@ public class PlayerMotor : MonoBehaviour
 {
     [SerializeField] public new Rigidbody2D rigidbody2D;
     [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float jumpHeight = 3f;
+    [SerializeField] private float jumpHeight = 10f;
+    [SerializeField] private float jumpForce = 10f;
     public bool isGrounded;
     public float gravity = -9.81f;
     public LayerMask groundLayers;
@@ -31,9 +32,9 @@ public class PlayerMotor : MonoBehaviour
         // playerVol.y += gravity * Time.deltaTime;
     }
 
-    public void jump()
+    public void Jump()
     {
         if (!isGrounded) return;
-        rigidbody2D.velocity = Vector2.up * jumpHeight;
+        rigidbody2D.velocity = Vector2.up * jumpForce * jumpHeight;
     }
 }
