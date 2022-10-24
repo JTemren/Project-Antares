@@ -29,7 +29,6 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 input)
     {
         rigidbody2D.velocity = new Vector2(input.x *movementSpeed,rigidbody2D.velocity.y);
-        // playerVol.y += gravity * Time.deltaTime;
     }
 
     public void Jump()
