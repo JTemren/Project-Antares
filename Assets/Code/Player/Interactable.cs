@@ -5,18 +5,15 @@ using UnityEngine.Events;
 
 public class Interactable : MonoBehaviour
 {
-    public bool isInRange;
-    public KeyCode interactKey;
+    [SerializeField] private bool isInRange;
+    
     public UnityEvent interactAction;
 
-    private void Update()
+    public void Interact()
     {
         if (isInRange)
         {
-            if (Input.GetKeyDown(interactKey))
-            {
-                interactAction.Invoke();
-            }
+            interactAction.Invoke();
         }
     }
 
