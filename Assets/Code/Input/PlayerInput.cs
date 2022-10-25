@@ -53,6 +53,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""89f1f765-0f48-47c6-a221-27a089ea05e9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -163,6 +172,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""176d141b-5978-4fc1-8ced-5df334a7616b"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -692,6 +712,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_PlayerOnfoot_Move = m_PlayerOnfoot.FindAction("Move", throwIfNotFound: true);
         m_PlayerOnfoot_Attack = m_PlayerOnfoot.FindAction("Attack", throwIfNotFound: true);
         m_PlayerOnfoot_Jump = m_PlayerOnfoot.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerOnfoot_Interact = m_PlayerOnfoot.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -766,6 +787,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerOnfoot_Move;
     private readonly InputAction m_PlayerOnfoot_Attack;
     private readonly InputAction m_PlayerOnfoot_Jump;
+    private readonly InputAction m_PlayerOnfoot_Interact;
     public struct PlayerOnfootActions
     {
         private @PlayerInput m_Wrapper;
@@ -773,6 +795,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerOnfoot_Move;
         public InputAction @Attack => m_Wrapper.m_PlayerOnfoot_Attack;
         public InputAction @Jump => m_Wrapper.m_PlayerOnfoot_Jump;
+        public InputAction @Interact => m_Wrapper.m_PlayerOnfoot_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerOnfoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -791,6 +814,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerOnfootActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerOnfootActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerOnfootActionsCallbackInterface.OnJump;
+                @Interact.started -= m_Wrapper.m_PlayerOnfootActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerOnfootActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerOnfootActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerOnfootActionsCallbackInterface = instance;
             if (instance != null)
@@ -804,6 +830,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -918,6 +947,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
