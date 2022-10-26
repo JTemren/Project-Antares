@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 public class InputManager : MonoBehaviour
 {
@@ -11,16 +6,13 @@ public class InputManager : MonoBehaviour
     private PlayerInput _playerInput;
 
     private PlayerMotor _motor;
-    private Interactable _interact;
     // Start is called before the first frame update
     private void Awake()
     {
         _playerInput = new PlayerInput();
         _onFoot = _playerInput.PlayerOnfoot;
         _motor = GetComponent<PlayerMotor>();
-        _interact = GetComponent<Interactable>();
         _onFoot.Jump.performed += ctx => _motor.Jump();
-        _onFoot.Interact.performed += ctx => _interact.Interact();
     }
 
     private void FixedUpdate()
