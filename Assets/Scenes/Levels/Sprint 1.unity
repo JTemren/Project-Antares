@@ -1697,18 +1697,8 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1625261289}
-        m_TargetAssemblyTypeName: SpriteChange, Assembly-CSharp
-        m_MethodName: Iterate
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      - {m_Target: {fileID: 1625261289}, m_TargetAssemblyTypeName: SpriteChange, Assembly-CSharp, m_MethodName: Iterate, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
+    m_CallsDirty: 1
 --- !u!58 &1625261291
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1829,7 +1819,7 @@ MonoBehaviour:
   rigidbody2D: {fileID: 0}
   movementSpeed: 5
   jumpHeight: 7.5
-  jumpForce: 10
+  jumpForce: 7.5
   isGrounded: 0
   gravity: -9.81
   groundLayers:
@@ -1910,6 +1900,7 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls: []
+    m_CallsDirty: 1
 --- !u!1 &1996542725
 GameObject:
   m_ObjectHideFlags: 0
