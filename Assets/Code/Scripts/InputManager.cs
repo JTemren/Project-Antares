@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    private PlayerInput.PlayerOnfootActions _onFoot;
+    public PlayerInput.PlayerOnfootActions OnFoot;
     private PlayerInput _playerInput;
 
     private PlayerMotor _motor;
@@ -10,24 +10,24 @@ public class InputManager : MonoBehaviour
     private void Awake()
     {
         _playerInput = new PlayerInput();
-        _onFoot = _playerInput.PlayerOnfoot;
+        OnFoot = _playerInput.PlayerOnfoot;
         _motor = GetComponent<PlayerMotor>();
-        _onFoot.Jump.performed += ctx => _motor.Jump();
+        OnFoot.Jump.performed += ctx => _motor.Jump();
     }
 
     private void FixedUpdate()
     {
-        _motor.ProcessMove(_onFoot.Move.ReadValue<Vector2>());
+        _motor.ProcessMove(OnFoot.Move.ReadValue<Vector2>());
     }
 
     // Update is called once per frame
     void OnEnable()
     {
-        _onFoot.Enable();
+        OnFoot.Enable();
     }
 
     private void OnDisable()
     {
-        _onFoot.Disable();
+        OnFoot.Disable();
     }
 }
