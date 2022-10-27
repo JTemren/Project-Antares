@@ -30,6 +30,6 @@ public class PlayerMotor : MonoBehaviour
     public void Jump()
     {
         if (!isGrounded) return;
-        rigidbody2D.velocity = Vector2.up * jumpForce * jumpHeight;
+        rigidbody2D.velocity = jumpHeight * (Vector2.up * jumpForce);
     }
 }
