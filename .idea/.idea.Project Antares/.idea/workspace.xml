@@ -8,7 +8,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Player/PlayerInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Player/PlayerMotor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Scripts/InteractionEvent.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -70,6 +72,8 @@
       <workItem from="1666286146813" duration="2031000" />
       <workItem from="1666610125413" duration="1255000" />
       <workItem from="1666694218385" duration="1000" />
+      <workItem from="1666708018016" duration="706000" />
+      <workItem from="1666778162846" duration="3144000" />
     </task>
     <servers />
   </component>
