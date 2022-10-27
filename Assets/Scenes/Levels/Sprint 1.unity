@@ -1697,8 +1697,7 @@ MonoBehaviour:
   interactAction:
     m_PersistentCalls:
       m_Calls:
-      - {m_Target: {fileID: 1625261289}, m_TargetAssemblyTypeName: SpriteChange, Assembly-CSharp, m_MethodName: Iterate, m_Mode: 1, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine, m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: , m_BoolArgument: 0}, m_CallState: 2}
-    m_CallsDirty: 1
+      - {m_Target: {fileID: 1625261289}, m_TargetAssemblyTypeName: SpriteChange, Assembly-CSharp: }
 --- !u!58 &1625261291
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1780,7 +1779,6 @@ GameObject:
   - component: {fileID: 1716210343}
   - component: {fileID: 1716210346}
   - component: {fileID: 1716210345}
-  - component: {fileID: 1716210347}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1884,23 +1882,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1716210347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1716210341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49463b19b900ab448aa60a2f695c7819, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isInRange: 0
-  interactAction:
-    m_PersistentCalls:
-      m_Calls: []
-    m_CallsDirty: 1
 --- !u!1 &1996542725
 GameObject:
   m_ObjectHideFlags: 0
