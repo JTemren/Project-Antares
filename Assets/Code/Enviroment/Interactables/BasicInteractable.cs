@@ -2,7 +2,7 @@ public class BasicInteractable : Interactable // interactables' inherit from Int
 
 {
     protected override void Interact()
-    {e
+    {
         // interactable code goes in her
     }
 }
