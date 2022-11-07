@@ -8,9 +8,12 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Editor/InteractableEditor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/EventInteractable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/Interactable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/Interactables/BasicInteractable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/Interactables/CubeInteract.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/InteractionEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Player/PlayerMotor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
@@ -77,7 +80,8 @@
       <workItem from="1666778162846" duration="3144000" />
       <workItem from="1666873342910" duration="6000" />
       <workItem from="1666873482642" duration="2400000" />
-      <workItem from="1666882728696" duration="1966000" />
+      <workItem from="1666882728696" duration="2560000" />
+      <workItem from="1667823546239" duration="5178000" />
     </task>
     <servers />
   </component>
