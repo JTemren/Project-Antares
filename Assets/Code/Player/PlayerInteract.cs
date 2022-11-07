@@ -5,7 +5,7 @@ using UnityEngine.Serialization;
 
 public class PlayerInteract : MonoBehaviour
 {
-    [SerializeField] private LayerMask mask;
+    [SerializeField] private LayerMask _mask;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +15,7 @@ public class PlayerInteract : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 }
