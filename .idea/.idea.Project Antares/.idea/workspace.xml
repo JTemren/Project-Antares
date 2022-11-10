@@ -14,7 +14,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/Interactables/BasicInteractable.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/Interactables/CubeInteract.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Code/Enviroment/InteractionEvent.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Code/Player/PlayerMotor.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -83,7 +82,9 @@
       <workItem from="1666882728696" duration="2560000" />
       <workItem from="1667823546239" duration="5178000" />
       <workItem from="1667842637081" duration="300000" />
-      <workItem from="1668076678487" duration="16693000" />
+      <workItem from="1668076678487" duration="16695000" />
+      <workItem from="1668098798671" duration="5722000" />
+      <workItem from="1668105271019" duration="14904000" />
     </task>
     <servers />
   </component>
