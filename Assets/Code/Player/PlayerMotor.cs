@@ -4,7 +4,7 @@ public class PlayerMotor : MonoBehaviour
 {
     [SerializeField] public new Rigidbody2D rigidbody2D;
     [SerializeField] private float movementSpeed = 5f;
-    [SerializeField] private float jumpHeight = 10f;
+    [SerializeField] private float jumpHeight = 1.5f;
     [SerializeField] private float jumpForce = 10f;
     public bool isGrounded;
     public float gravity = -9.81f;
