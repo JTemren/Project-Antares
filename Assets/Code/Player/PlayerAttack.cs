@@ -10,10 +10,20 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Animator animator;
     private string _currentState;
 
+    [Header("Attacks")] 
+    [SerializeField] private int numberOfAttacks;
+    [SerializeField] private int currentAttackCounter;
+    public int CurrentAttackCounter
+    {
+        get => currentAttackCounter;
+        private set => currentAttackCounter = value >= numberOfAttacks ? 0 : value; 
+    }
+    
+
     private PlayerMotor _playerMotor;
     [SerializeField] private bool isAttacking;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     { 
         animator = GetComponent<Animator>();
         _playerMotor = GetComponent<PlayerMotor>();
@@ -22,29 +32,37 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (isAttacking)
+        if (isAttacking) return;
+        switch (CurrentAttackCounter)
         {
-            default:
+            case 0:
                 ChangeAnimationState("P_Idle");
                 break;
-            case true:
+            case 1:
                 ChangeAnimationState("P_Slash");
                 break;
+            case 2:
+                ChangeAnimationState("P_Slash2");
+                break;
+            case 3:
+                ChangeAnimationState("P_Slam");
+                break;
+            case 4:
+                ChangeAnimationState("P_Spin");
+                break;
         }
+
     }
 
     public void Attack(InputAction.CallbackContext context)
     {
-        Debug.Log("Attack " + context.phase);
         if (context.started)
         {
-            isAttacking = !isAttacking;
+            isAttacking = true;
+            CurrentAttackCounter++;
         }
-        else if (context.canceled)
-        {
-            isAttacking = !isAttacking;
-
-        }
+        Debug.Log("Attack " + context.phase);
+        isAttacking = false;
     }
 
     private void ChangeAnimationState(string newState)
