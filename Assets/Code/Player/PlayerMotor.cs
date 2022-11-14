@@ -1,97 +1,103 @@
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [Header("Components")] 
+    [Header("Components")]
     [SerializeField] private new Rigidbody2D rigidbody2D;
-    [SerializeField] private BoxCollider2D boxCollider2D;
-    
+    [SerializeField] private Transform groundCheck;
+
     [Header("Animation")]
     [SerializeField] private Animator animator;
-    [SerializeField] private string currentState;
+    private string _currentState;
 
-    [Header("Movement")] 
-    
+    [Header("Movement")]
     [SerializeField] private float speed = 10f;
-    private Vector2 _vecMove;
+    [SerializeField] private float horizontal; 
 
-    [Header("Jump")]
+    [Header("Jump")] 
     [SerializeField] private float jumpForce = 10;
     [SerializeField] private LayerMask layerMask;
-    private const float HangTime = 0.2f;
-    private float _hangTimeCounter;
-    private const float JumpBufferTime = 0.2f;
-    private float _jumpBufferCounter;
+    [SerializeField] private float hangTimeCounter;
+    [SerializeField] private float bufferTimeCounter;
+    private const float HangTime = .2f;
+    private const float BufferTime = .2f;
+
     private void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
-        boxCollider2D = GetComponent<BoxCollider2D>();
         animator = GetComponent<Animator>();
     }
     private void Update()
     {
-        if (IsGrounded())
+        switch (IsGrounded())
         {
-            _hangTimeCounter = HangTime;
+            case false:
+            {
+                hangTimeCounter -= Time.deltaTime;
+                bufferTimeCounter -= Time.deltaTime;
+                if (rigidbody2D.velocity.y > 0) ChangeAnimationState("P_Jump");
+                if (rigidbody2D.velocity.y < 0) ChangeAnimationState("P_Fall");
+                break;
+            }
+            case true:
+            {
+                hangTimeCounter = HangTime;
+                bufferTimeCounter = BufferTime;
+                ChangeAnimationState(horizontal != 0 ? "P_Run" : "P_Idle");
+                break;
+            }
         }
-        else
-        {
-            _hangTimeCounter -= Time.deltaTime;
-        }
-
-        if (Keyboard.current.spaceKey.wasReleasedThisFrame || Gamepad.current.buttonSouth.wasPressedThisFrame)
-        {
-            _hangTimeCounter = Time.deltaTime;
-        }
-        
-        IsGrounded();
     }
 
     private void FixedUpdate()
     {
-        rigidbody2D.velocity = new Vector2(_vecMove.x * speed, rigidbody2D.velocity.y);
+        rigidbody2D.velocity = new Vector2(horizontal * speed, rigidbody2D.velocity.y);
     }
 
     private void ChangeAnimationState(string newState)
     {
-        if(currentState == newState) return;
+        if(_currentState == newState) return;
         animator.Play(newState);
-        currentState = newState;
+        _currentState = newState;
     }
 
     public void Jump(InputAction.CallbackContext context)
     {
-        Debug.Log(context.phase);
-        if (context.started && _hangTimeCounter > 0f)
+        Debug.Log("Jump " + context.phase);
+        switch (bufferTimeCounter > 0f)
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
-            _jumpBufferCounter = JumpBufferTime;
+            case true when hangTimeCounter > 0:
+                bufferTimeCounter = 0f;
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, jumpForce);
+                break;
         }
-        if (context.canceled && rigidbody2D.velocity.y > 0f)
+
+        switch (context.canceled)
         {
-            rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y * 0.5f);
-            _hangTimeCounter = 0f;
+            case true when rigidbody2D.velocity.y > 0f:
+                hangTimeCounter = 0f;
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y * .5f);
+                break;
         }
     }
 
     public void Move(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<Vector2>());
-        _vecMove = context.ReadValue<Vector2>();
+        Debug.Log("Move " + context.phase);               
+        horizontal = context.ReadValue<Vector2>().x;
         Flip();
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
-        var raycastHit2D = Physics2D.BoxCast(boxCollider2D.bounds.center, boxCollider2D.bounds.size, 0f, Vector2.down, .1f, layerMask);
-        Debug.Log(raycastHit2D.collider);
-        return raycastHit2D.collider != null;
+        return Physics2D.OverlapCircle(groundCheck.position, .2f, layerMask);
     }
     private void Flip()
     {
-        switch (_vecMove.x)
+        switch (horizontal)
         {
             case < 0f:
                 transform.localScale = new Vector3(-1, 1, 1);
