@@ -6333,9 +6333,17 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1088888493133477534, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
+      propertyPath: speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1088888493133477534, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
       propertyPath: animator
       value: 
       objectReference: {fileID: 981322096}
+    - target: {fileID: 1088888493133477534, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
+      propertyPath: linearDrag
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1088888493133477534, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
       propertyPath: groundCheck
       value: 
@@ -6344,6 +6352,10 @@ PrefabInstance:
       propertyPath: rigidbody2D
       value: 
       objectReference: {fileID: 981322094}
+    - target: {fileID: 1088888493133477534, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
+      propertyPath: acceleration
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1088888493133477534, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
       propertyPath: layerMask.m_Bits
       value: 64
@@ -6451,6 +6463,10 @@ PrefabInstance:
     - target: {fileID: 8449292811676371549, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8832006475984269419, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
+      propertyPath: numberOfAttacks
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8449292811676371549, guid: f3b2d68e8b6bdb649b20a6f32736d871, type: 3}
