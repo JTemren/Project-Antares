@@ -15,7 +15,7 @@ public class PlayerMotor : MonoBehaviour
 
     [Header("Movement")]
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float horizontal; 
+    [SerializeField] private float horizontal;
 
     [Header("Jump")] 
     [SerializeField] private float jumpForce = 10;
@@ -55,6 +55,10 @@ public class PlayerMotor : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody2D.velocity = new Vector2(horizontal * speed, rigidbody2D.velocity.y);
+        // rigidbody2D.AddForce(new Vector2(horizontal, 0f) * acceleration);
+        // if (Mathf.Abs(rigidbody2D.velocity.x)>speed)
+        //     rigidbody2D.velocity = new Vector2(Mathf.Sign(rigidbody2D.velocity.x) * speed, rigidbody2D.velocity.y);
+
     }
 
     private void ChangeAnimationState(string newState)
@@ -79,7 +83,7 @@ public class PlayerMotor : MonoBehaviour
         {
             case true when rigidbody2D.velocity.y > 0f:
                 hangTimeCounter = 0f;
-                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, rigidbody2D.velocity.y * .5f);
+                rigidbody2D.velocity = new Vector2(rigidbody2D.velocity.x, 0);
                 break;
         }
     }
