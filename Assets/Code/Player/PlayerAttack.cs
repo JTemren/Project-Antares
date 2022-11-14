@@ -18,7 +18,6 @@ public class PlayerAttack : MonoBehaviour
         get => currentAttackCounter;
         private set => currentAttackCounter = value >= numberOfAttacks ? 0 : value; 
     }
-    
 
     private PlayerMotor _playerMotor;
     [SerializeField] private bool isAttacking;
@@ -32,26 +31,29 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isAttacking) return;
-        switch (CurrentAttackCounter)
+        switch (isAttacking)
         {
-            case 0:
+            case true:
+                switch (CurrentAttackCounter)
+                {
+                    case 0:
+                        ChangeAnimationState("P_Slash");
+                        break;
+                    case 1:
+                        ChangeAnimationState("P_Slash2");
+                        break;
+                    case 2:
+                        ChangeAnimationState("P_Slam");
+                        break;
+                    case 3:
+                        ChangeAnimationState("P_Spin");
+                        break;
+                }
+                break;
+            case false:
                 ChangeAnimationState("P_Idle");
                 break;
-            case 1:
-                ChangeAnimationState("P_Slash");
-                break;
-            case 2:
-                ChangeAnimationState("P_Slash2");
-                break;
-            case 3:
-                ChangeAnimationState("P_Slam");
-                break;
-            case 4:
-                ChangeAnimationState("P_Spin");
-                break;
         }
-
     }
 
     public void Attack(InputAction.CallbackContext context)
@@ -61,8 +63,12 @@ public class PlayerAttack : MonoBehaviour
             isAttacking = true;
             CurrentAttackCounter++;
         }
+
+        if (context.canceled)
+        {
+            isAttacking = false;
+        }
         Debug.Log("Attack " + context.phase);
-        isAttacking = false;
     }
 
     private void ChangeAnimationState(string newState)

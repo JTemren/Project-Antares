@@ -34,6 +34,14 @@
   }
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Antares\Project Antares.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\Jamie\Desktop\Antares" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="UnitTests (batch mode)" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2021.3.11f1\Editor\Unity.exe" />
       <option name="PROGRAM_PARAMETERS" value="-runTests -batchmode -projectPath &quot;C:\Users\Jamie\Documents\COMP3013\Project Antares\Project Antares&quot; -testResults Logs/results.xml -testPlatform EditMode -debugCodeOptimization" />
@@ -89,7 +97,7 @@
       <workItem from="1668244129854" duration="352000" />
       <workItem from="1668245034022" duration="4899000" />
       <workItem from="1668334915059" duration="32306000" />
-      <workItem from="1668425481226" duration="6910000" />
+      <workItem from="1668425481226" duration="9689000" />
     </task>
     <servers />
   </component>
