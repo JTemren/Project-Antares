@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2755696065225681102
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3012828551721795089}
-  m_Layer: 0
-  m_Name: GroundCheck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3012828551721795089
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2755696065225681102}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.95, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3805885101280030764}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3805885101280030767
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,8 +14,9 @@ GameObject:
   - component: {fileID: 3805885101280030761}
   - component: {fileID: 3805885101280030760}
   - component: {fileID: 8000000097615285288}
-  - component: {fileID: 1088888493133477534}
-  - component: {fileID: 8832006475984269419}
+  - component: {fileID: 7799041618074329626}
+  - component: {fileID: 8409327654631784736}
+  - component: {fileID: 7658415197091648387}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -65,8 +35,7 @@ Transform:
   m_LocalPosition: {x: 1, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 3012828551721795089}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -131,15 +100,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 2063238636, guid: e6bffbce59c2ca943b4072eeef297dfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.625, y: 2.3125}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &3805885101280030761
@@ -206,9 +175,9 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1088888493133477534}
+      - m_Target: {fileID: 7799041618074329626}
         m_TargetAssemblyTypeName: PlayerMotor, Assembly-CSharp
-        m_MethodName: Move
+        m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -222,9 +191,9 @@ MonoBehaviour:
     m_ActionName: OnFoot/Move[/XInputControllerWindows/leftStick,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1088888493133477534}
+      - m_Target: {fileID: 7799041618074329626}
         m_TargetAssemblyTypeName: PlayerMotor, Assembly-CSharp
-        m_MethodName: Jump
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -277,15 +246,27 @@ MonoBehaviour:
     m_ActionId: 9e2c808e-5484-4e6e-a9f8-5374767591c5
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5e812594-01aa-49e5-946b-785f75db1a18
-    m_ActionName: OnFoot/Dash[/Keyboard/leftShift,/XInputControllerWindows/buttonEast,/XInputControllerWindows1/buttonEast]
+      m_Calls:
+      - m_Target: {fileID: 8409327654631784736}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b276bce4-07b9-4816-ae61-dc5692dc07f1
+    m_ActionName: OnFoot/Attack[/XInputControllerWindows/rightShoulder,/Keyboard/c]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: OnFoot
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1088888493133477534
+--- !u!114 &7799041618074329626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -297,18 +278,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3edf4ee75a409b24581ec06ba4089fa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigidbody2D: {fileID: 0}
-  groundCheck: {fileID: 0}
-  animator: {fileID: 0}
-  speed: 10
-  horizontal: 0
-  jumpForce: 10
-  layerMask:
-    serializedVersion: 2
-    m_Bits: 0
-  hangTimeCounter: 0
-  bufferTimeCounter: 0
---- !u!114 &8832006475984269419
+  isFacingRight: 1
+  walkSpeed: 5
+--- !u!114 &8409327654631784736
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,4 +292,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc636abd17ed6f40b66e6780c4f6e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+--- !u!114 &7658415197091648387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3805885101280030767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cae5001c95f162a4b9a72843bf52b41d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

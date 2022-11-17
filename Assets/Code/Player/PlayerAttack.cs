@@ -1,91 +1,64 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 
 public class PlayerAttack : MonoBehaviour
 {
-    [Header("Animation")]
-    [SerializeField] private Animator animator;
-    private string _currentState;
+    [Header("Components")] private Animator _animator;
+    private AnimationEventHandler _animationEventHandler;
 
-    [Header("Attacks")] 
+    [Header("Attack")] [SerializeField] private int currentAttackCounter;
     [SerializeField] private int numberOfAttacks;
-    [SerializeField] private int currentAttackCounter;
-    public int CurrentAttackCounter
+
+    [SerializeField] private bool isAttacking;
+    [SerializeField] private bool isAnimationFinished = false;
+
+    private int CurrentAttackCounter
     {
         get => currentAttackCounter;
-        private set => currentAttackCounter = value >= numberOfAttacks ? 0 : value; 
+        set => currentAttackCounter = value >= numberOfAttacks ? 0 : value;
     }
 
-    private PlayerMotor _playerMotor;
-    [SerializeField] private bool isAttacking;
-    // Start is called before the first frame update
-    void Awake()
-    { 
-        animator = GetComponent<Animator>();
-        _playerMotor = GetComponent<PlayerMotor>();
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+        if (_animator == null) Debug.Log("Animator is Null");
+        _animationEventHandler = GetComponent<AnimationEventHandler>();
+        if (_animationEventHandler == null) Debug.Log("Animation Event Handler is Null");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         switch (isAttacking)
         {
             case true:
-                switch (CurrentAttackCounter)
+                if (CurrentAttackCounter == 0)
                 {
-                    case 0:
-                        ChangeAnimationState("P_Slash");
-                        break;
-                    case 1:
-                        ChangeAnimationState("P_Slash2");
-                        break;
-                    case 2:
-                        ChangeAnimationState("P_Slam");
-                        break;
-                    case 3:
-                        ChangeAnimationState("P_Spin");
-                        break;
+                    _animationEventHandler.ChangeAnimationState(AnimationState.Attack1);
                 }
                 break;
-            case false:
-                ChangeAnimationState("P_Idle");
+            case false when isAnimationFinished:
+                _animationEventHandler.ChangeAnimationState(AnimationState.Idle);
                 break;
         }
     }
 
-    public void Attack(InputAction.CallbackContext context)
+    public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.started)
         {
-            isAttacking = true;
-            CurrentAttackCounter++;
+            Debug.Log(context.phase);
+            isAttacking = !isAnimationFinished;
         }
 
         if (context.canceled)
         {
-            isAttacking = false;
-        }
-        Debug.Log("Attack " + context.phase);
-    }
+            isAttacking = !isAnimationFinished;
 
-    private void ChangeAnimationState(string newState)
-    {
-        if(_currentState == newState) return;
-        animator.Play(newState);
-        _currentState = newState;
-    }
-
-    private bool IsAnimationPlaying(Animator animator, string stateName)
-    {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName(stateName) &&
-            animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1f)
-        {
-            return true;
         }
-        return false;
     }
-    
 }
