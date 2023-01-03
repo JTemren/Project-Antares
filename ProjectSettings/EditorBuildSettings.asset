@@ -6,6 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Other/Main Menu.unity
+    guid: dbbf53f2446c7c94d826a03ed355bc5a
+  - enabled: 1
     path: Assets/Scenes/Levels/First Level Prototype 1.unity
     guid: 94f37984d45b7554eafee43077b42005
+  - enabled: 1
+    path: Assets/Scenes/Other/HelpScreen.unity
+    guid: dc3f02246438a554a95088671a93600f
+  - enabled: 1
+    path: Assets/Scenes/Other/SettingsScreen.unity
+    guid: 8899c7ef59729b8449f33a90ae3a8128
+  - enabled: 1
+    path: Assets/Christmas/ChristmasLevel.unity
+    guid: 564313bb2c98b3646ad73045d24206fc
   m_configObjects: {}

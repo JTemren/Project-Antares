@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SimpleQuitButton : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class SimpleQuitButton : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Application.Quit();
+            SceneManager.LoadScene(0);
+            //Application.Quit();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
